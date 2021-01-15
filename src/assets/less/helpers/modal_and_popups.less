@@ -1,0 +1,162 @@
+.popUpTooltip(@tooltipBgColor){
+    box-shadow: 0px 1px 3px #797979;
+    display: inline-block;
+    max-width:200px;
+    min-height: 40px;
+    white-space: nowrap;
+    position: absolute;
+    left: auto;
+    right: auto;
+    margin-right: auto;
+    margin-left: auto;
+    bottom: auto;
+    top:-23px;
+    padding: .35em 1em;
+    z-index: 2000;
+    margin-top: -32px;
+    color: overlay(#FFF,@tooltipBgColor);
+    font-size: 17.5px;
+    border-radius: 0.25em;
+    vertical-align: middle;
+    background-color: @tooltipBgColor;
+
+    .singleGradientBg(180deg,@tooltipBgColor,darken(@tooltipBgColor,40%,relative));
+
+    &:after{
+        content: "";
+        width:0;
+        height:0;
+        position: absolute;
+        z-index: 1999;
+        top: 99%;
+        bottom: auto;
+        left:50%;
+        right:auto;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 14px solid darken(@tooltipBgColor,40%,relative);
+    }
+}
+
+.tag(@tagBgColor){
+    color: @tagFontColor;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: normal;
+    text-transform: uppercase;
+    z-index: 100;
+    text-align: center;
+    margin-top: 3px;
+    padding-left: 10px;
+    position: absolute;
+
+    &:after{
+        content:"";
+        float:right;
+        clear:both;
+        margin-top: -18px;
+        margin-right: -7px;
+        min-width:90px;
+        border-top: 12px solid @tagBgColor;
+        border-bottom: 12px solid @tagBgColor;
+        border-right: 12px solid transparent;
+    }
+}
+
+.popUpTooltipDanger{
+    .popUpTooltip(@tooltipBgColorDanger);
+
+}
+.popUpTooltipSuccess{
+    .popUpTooltip(@tooltipBgColorSuccess);
+}
+.popUpTooltipInfo{
+    .popUpTooltip(@tooltipBgColorInfo);
+}
+.popUpTooltipMuted{
+    .popUpTooltip(@tooltipBgColorMuted);
+}
+
+.tag-info{
+    .tag(@colorInfo);
+    .textShadow(3px,darken(@colorInfo,10%));
+}
+.tag-danger{
+    .tag(@colorDanger);
+    .textShadow(3px,darken(@colorDanger,10%));
+}
+.tag-primary{
+    .tag(@colorPrimary);
+    .textShadow(3px,darken(@colorPrimary,10%));
+}
+.tag-warning{
+    .tag(@colorWarning);
+    .textShadow(3px,darken(@colorWarning,10%));
+}
+.tag-success{
+    .tag(@colorSuccess);
+    .textShadow(3px,darken(@colorSuccess,10%));
+}
+
+#popUpContainer{
+    background-color: #ffffff;
+    min-height: 50px;
+    width: 700px !important;
+    min-width: 550px;
+    padding-bottom: 5px;
+    height:auto !important;
+    left: 50% !important;
+    margin-left: -350px !important;
+    border-radius: 10px 10px;
+    box-shadow: 0px 3px 5px #444;
+    margin: 3% auto;
+}
+
+#popUpContainer > strong{
+    margin:7px;
+    border-radius: 7px;
+    width:auto;
+}
+#popUpContainer .registration_msg_container,
+#popUpContainer .msg_container{
+    height:100%;
+    margin: 10px 12px;
+    min-width: 660px;
+    border-radius:8px;
+    padding: 16px 10px;
+    background: #f0f0f0;
+}
+#popUpContainer > strong{
+    display: block;
+    /*margin: 15px 25px;*/
+    /*padding: 20px;*/
+    background: #f2f2f2;
+    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.13);
+    text-align: center;
+    line-height: normal;
+}
+span#msgSntPopup{
+    width:100%;
+    position: fixed;
+    margin: 0 auto;
+    z-index: 10000;
+    top: 5%;
+    text-align: center;
+    font-weight: bold;
+    line-height: normal;
+	display: block;
+	height: auto;
+	background-color: #c06161;
+    box-shadow: 0px 3px 4px #777;
+}
+span#msgSntPopup h1{
+	margin:0;
+	color:#ffffff;
+	font-size:160%;
+}
+span#msgSntPopup h1:before{
+    content: "\f06a";
+    font-family: fontawesome;
+    margin-right: 5px;
+    font-size: 120%;
+}

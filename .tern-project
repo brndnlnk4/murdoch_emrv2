@@ -1,0 +1,24 @@
+{
+  "ecmaVersion": 8,
+  "libs": [
+    "browser"
+  ],
+  "loadEagerly": [
+    "/murdoch_emrv2/src/incl/**/*.js",
+    "/murdoch_emrv2/src/incl/**/*.jsx",
+    "/murdoch_emrv2/src/incl/components/**/*.jsx",
+    "/murdoch_emrv2/src/incl/components/**/*.js"
+  ],
+  "dontLoad": [
+    "node_modules/**",
+    "/murdoch_emrv2/public/**/*.js"
+  ],
+  "plugins": {
+    "es_modules": {},
+    "node": {},
+    "doc_comment": {
+      "fullDocs": true,
+      "strong": true
+    }
+  }
+}

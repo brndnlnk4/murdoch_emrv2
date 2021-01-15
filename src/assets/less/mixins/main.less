@@ -1,0 +1,395 @@
+@import url('./rightsideDrawerMixins');
+
+
+/********************* MISC **********************/
+.resolveChildElementColors(@color, @index){
+  ////BODY DOM ELEMENT SPACE
+  background: @color;
+
+  li.droppable{
+    & when (@color = @bodyBgDark){
+      background: transparent;
+    }
+    & when (@color = @bodyBgSecondary){
+      background: transparent;
+    }
+  }
+
+  // .Nav{
+    // border-color: if((@index = 2), red, blue);
+  // }
+}
+.boxShadow(@boxShadowX: 2px, @boxShadowY: 3px, @boxShadowSpread: 4px, @boxShadowColor: #131313) {
+  // @boxShadowXresolved: (if(boolean(isPixel(@boxShadowX)), @boxShadowX, 2px))
+  -webkit-box-shadow: @boxShadowX @boxShadowY @boxShadowSpread @boxShadowColor;
+  -moz-box-shadow: @boxShadowX @boxShadowY @boxShadowSpread @boxShadowColor;
+  -ms-box-shadow: @boxShadowX @boxShadowY @boxShadowSpread @boxShadowColor;
+  -o-box-shadow: @boxShadowX @boxShadowY @boxShadowSpread @boxShadowColor;
+  box-shadow: @boxShadowX @boxShadowY @boxShadowSpread @boxShadowColor;
+}
+.boxShadowInset(@boxShadowSpread, @boxShadowColor) {
+  -webkit-box-shadow: 0px 0px @boxShadowSpread @boxShadowColor inset;
+  -moz-box-shadow: 0px 0px @boxShadowSpread @boxShadowColor inset;
+  -ms-box-shadow: 0px 0px @boxShadowSpread @boxShadowColor inset;
+  -o-box-shadow: 0px 0px @boxShadowSpread @boxShadowColor inset;
+  box-shadow: 0px 0px @boxShadowSpread @boxShadowColor inset;
+}
+.textShadow(@textShadowSpread, @textShadowColor) {
+  -webkit-text-shadow: 0px 3px @textShadowSpread @textShadowColor;
+  -moz-text-shadow: 0px 3px @textShadowSpread @textShadowColor;
+  -ms-text-shadow: 0px 3px @textShadowSpread @textShadowColor;
+  -o-text-shadow: 0px 3px @textShadowSpread @textShadowColor;
+  text-shadow: 0px 3px @textShadowSpread @textShadowColor;
+}
+.doubleGradientBg(@degree, @color1, @color2, @color3){
+  -webkit-background: linear-gradient(@degree, @color1, @color2, @color3);
+  -moz-background: linear-gradient(@degree, @color1, @color2, @color3);
+  -o-background: linear-gradient(@degree, @color1, @color2, @color3);
+  background: linear-gradient(@degree, @color1, @color2, @color3);
+}
+.singleGradientBg(@degree, @color1, @color2) {
+  -webkit-background: linear-gradient(@degree, @color1, @color2);
+  -moz-background: linear-gradient(@degree, @color1, @color2);
+  -ms-background: linear-gradient(@degree, @color1, @color2);
+  -o-background: linear-gradient(@degree, @color1, @color2);
+  background: linear-gradient(@degree, @color1, @color2);
+}
+.tooltip(@bgColor) {
+  .tolltip-arrow-mixin(@bgColor) {
+    .tooltipArrow(@bgColor, @placement) {
+      border-@{placement}-color: @bgColor !important;
+    }///END arrow
+    .left .tooltip-arrow {
+      .tooltipArrow(@bgColor, left);
+    }
+    .right .tooltip-arrow {
+      .tooltipArrow(@bgColor, right);
+    }
+    .top .tooltip-arrow {
+      .tooltipArrow(@bgColor, top);
+    }
+    .bottom .tooltip-arrow {
+      .tooltipArrow(@bgColor, bottom);
+    }
+  }///END arrow mixin
+  .tooltip-inner-mixin(@bgColor) {
+    .tooltip-inner {
+      border-color: @bgColor !important;
+      background-color: @bgColor !important;
+    }
+  }///END inner mixin
+  .tooltip-inner-mixin(@bgColor);
+  .tolltip-arrow-mixin(@bgColor);
+}
+.flipSideToSide(@degree){
+  -webkit-transform: rotateY(@degree);
+  -moz-transform: rotateY(@degree);
+  -ms-transform: rotateY(@degree);
+  -o-transform: rotateY(@degree);
+  transform: rotateY(@degree);
+  -webkit-transition-property: transform;
+  -moz-transition-property: transform;
+  -ms-transition-property: transform;
+  -o-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: .25s;
+  -moz-transition-duration: .25s;
+  -ms-transition-duration: .25s;
+  -o-transition-duration: .25s;
+  transition-duration: .25s;
+  transition-timing-function:linear;
+}
+.translateY(@translateAmt){
+  -webkit-transform: translateY(@translateAmt);
+  -moz-transform: translateY(@translateAmt);
+  -ms-transform: translateY(@translateAmt);
+  -o-transform: translateY(@translateAmt);
+  transform: translateY(@translateAmt);
+}
+.translateX(@translateAmt){
+  -webkit-transform: translateX(@translateAmt);
+  -moz-transform: translateX(@translateAmt);
+  -ms-transform: translateX(@translateAmt);
+  -o-transform: translateX(@translateAmt);
+  transform: translateX(@translateAmt);
+}
+.transitionFrom(@property, @duration){
+  -webkit-transition: @property @duration ease-in-out;
+  -moz-transition: @property @duration ease-in-out;
+  -ms-transition: @property @duration ease-in-out;
+  -o-transition: @property @duration ease-in-out;
+  transition: @property @duration ease-in-out;
+}
+.no-padding-(@direction){
+  padding-@{direction}: 0px !important;
+}
+.fadeBackgroundColors(@bgColor1,@bgColor2,@duration,@iterationCnt){
+  @keyframes flashBgColor{
+    from{
+      background-color: @bgColor1
+    }to{
+      background-color: @bgColor2
+    }
+  }
+  -webkit-animation: flashBgColor;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-duration: @duration;
+  -webkit-animation-iteration-count: @iterationCnt;
+  -moz-animation: flashBgColor;
+  -moz-animation-direction: alternate;
+  -moz-animation-duration: @duration;
+  -moz-animation-iteration-count: @iterationCnt;
+  -ms-animation: flashBgColor;
+  -ms-animation-direction: alternate;
+  -ms-animation-duration: @duration;
+  -ms-animation-iteration-count: @iterationCnt;
+  -o-animation: flashBgColor;
+  -o-animation-direction: alternate;
+  -o-animation-duration: @duration;
+  -o-animation-iteration-count: @iterationCnt;
+  animation: flashBgColor;
+  animation-direction: alternate;
+  animation-duration: @duration;
+  animation-iteration-count: @iterationCnt;
+}
+.errNotificationContainerStyle1(@bgInfoPrimaryWarningDangerColor){
+  @BGColor: darken(@bgInfoPrimaryWarningDangerColor,40%);
+  @TEXTColor: lighten(@bgInfoPrimaryWarningDangerColor,25%);
+  @BORDERColor: darken(@bgInfoPrimaryWarningDangerColor, 47%);
+  @TEXTSHADOWColor: darken(@bgInfoPrimaryWarningDangerColor, 70%);
+
+  .singleGradientBg(180deg, @BGColor, overlay(@BGColor, @bgInfoPrimaryWarningDangerColor));
+  .textShadow(3px, @TEXTSHADOWColor);
+
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 5px !important;
+  margin: 0px !important;
+  display: block;
+  border-radius: 4px;
+  background-color: @BGColor;
+  border: 1px solid @BORDERColor;
+  color: @TEXTColor;
+}
+.customScrollBar(@maxHeightToTriggerScroll:@dashboard_module_max_height, @scrollbarBgColor:darken(@secondary, 40%), @scrollbarWidth:6px){
+
+	&::-webkit-scrollbar{
+		background-color: @scrollbarBgColor;
+		width: @scrollbarWidth;
+	}///END scrollbar
+	&::-webkit-scrollbar-thumb{
+		background-color: darken(@scrollbarBgColor, 40%);
+	}///END scrollbar-thumb
+	&::-webkit-scrollbar-track{
+		background-color: @scrollbarBgColor;
+	}///END scrollbar-track
+}
+.fontAwesomeFloatLeft(){
+  display: inline-block;
+  vertical-align: top;
+  float: left;
+  font-size: 3.5em;
+  height: 0;
+  width: 0;
+}
+.fontAwesomeInlineFloatLeftFix(@faIcon){
+  content: @faIcon;
+  font-family: "fontawesome";
+
+  .fontAwesomeFloatLeft();
+}
+.animationProperties(@animationName, @easingTimingFunction:ease-out, @iterationCount:infinite, @direction:normal, @duration:2s){
+  animation-name: @animationName;
+  animation-timing-function: @easingTimingFunction;
+  animation-iteration-count: @iterationCount;
+  animation-direction: @direction;
+  animation-fill-mode: none;
+  animation-duration: @duration;
+}
+.jqueryuiWidgetDialogStyles(@bodyThemeColor) {
+  .ui-dialog,
+  .ui-dialog.ui-widget {
+    border: 1px solid orange;
+
+    &.ui-widget-content {
+      .singleGradientBg(180deg, #555, #ddd);
+
+      .ui-dialog-titlebar {
+        .singleGradientBg(180deg, #aaa, blue);
+      }
+      .ui-dialog-content {
+        .singleGradientBg(180deg, #aaa, red);
+      }
+      .ui-dialog-buttonpane {
+        background: transparent;
+
+        .ui-dialog-buttonset {
+          border: 1px solid #444;
+        }
+      }
+    }
+  }
+}
+
+/*************** dashboard module styles *****************/
+.dashboardModulesCardContainerStyle(@key, @value) {
+  /////GRID-LAYOUT VARS
+  @gridLayout: @{membersModulesContainer} .react-grid-layout;
+  @themeSetToDarkBool: boolean(@key = dark);
+  @reactGridDashboardModuleSectionContainers: @{gridLayout} > .react-grid-item;
+  @cardTextColor: if((@themeSetToDarkBool), lighten(@light, 10%), darken(@secondary, 55%));
+  @cardBgColor: if((@themeSetToDarkBool), darken(@value, 10%), @light);
+  @gridLayoutItemBorderStyle: thick solid if((@themeSetToDarkBool), fade(@value, 75%), @value);
+
+  ////DASHBOARD-MODULE CARD CONTAINERS
+  @{reactGridDashboardModuleSectionContainers} {
+    border: @gridLayoutItemBorderStyle;
+
+    #draggedItemTemp {
+      background-color: #ff2020;
+      border: 2px solid red;
+    }
+
+    .customScrollBar(400px, @cardBgColor, 6px);
+    .boxShadow(0.5px, 3px, 5px);
+
+    &:hover {
+      .react-resizable-handle {
+        padding: 1rem 1rem;
+        }///END react-resizable-handle
+      }
+      .react-resizable-handle {
+        .doubleGradientBg(315deg, @colorInfo, fade(rgb(18, 148, 255), 5%), transparent);
+        }///END react-resizable-handle
+
+    .card-group {
+      > .card {
+        background-color: @cardBgColor;
+
+        .card-body {
+          background-color: darken(@cardBgColor, 3%);
+          color: mix(@cardTextColor, @cardBgColor);
+
+          .dashboardModuleListGroupItemStyling(false);
+
+        }//END card-body
+
+        .card-header {
+          .singleGradientBg(180deg, lighten(@cardBgColor, 7%), fade(@cardBgColor, 25%));
+
+          .card-title {
+            color: overlay(@cardTextColor, @cardBgColor);
+          }//END card-title
+        }//END card-header
+
+        .card-text {
+          color: fade(@cardTextColor, 85%);
+        }//END card-text
+
+        .dashboardModuleListGroupItemStyling(true);
+
+        /////////CUSTOM MIXIN STYLES
+        .calendarModuleDatepickerWidgetStyle(@key, @value);
+
+        .medicationStatsModuleChartistStyle(@key, @value);
+
+        #favoritesPatientsAccordionContainer.ui-accordion {
+          @favoritesAccordionBgColor: if((@themeSetToDarkBool), @value, @light);
+          @favoritesAccordionTextColor: if((@themeSetToDarkBool), tint(@value, 60%), shade(@value, 40%));
+
+          .ui-accordion-header {
+            background-color: @favoritesAccordionBgColor;
+            color: @favoritesAccordionTextColor;
+            border-width: 0;
+          }
+
+          .ui-accordion-content {
+            background-color: @favoritesAccordionBgColor;
+            color: @favoritesAccordionTextColor;
+            border-width: 0;
+          }
+        }
+
+      }//END card
+    }//END card-grp
+  }//END react-grid-layout
+}//END dashboardModulesCardContainerStyle
+
+//////DASHBOARD MODULE-PARTIAL MIXINS
+.dashboardModuleListGroupItemStyling(@wrappedInCardBody: false) {
+
+  @listItemBgColor: if(not(boolean(@wrappedInCardBody)), rgb(79, 79, 79), rgb(161, 161, 161));
+  @listItemTextColor: if(not(boolean(@wrappedInCardBody)), rgb(79, 79, 79), rgb(161, 161, 161));
+
+  .list-group {
+    .list-group-item-dark {
+      background-color: tint(@cardBgColor, 10%);
+      color: @cardTextColor;
+    }///END list-group-item-dark
+  }///END list-group
+}
+
+.medicationStatsModuleChartistStyle(@key, @value) {
+  .ct-chart {
+    @ctGridBaseColor: if((@themeSetToDarkBool), darken(@colorDanger, 10%), lighten(@dark, 10%));
+    @ctGridStrokeColor: if((@themeSetToDarkBool), fade(@ctGridBaseColor, 20%), shade(@ctGridBaseColor, 40%));
+
+    & .ct-grids,
+    & .ct-labels {
+      .ct-grid {
+        stroke: @ctGridStrokeColor;
+      }
+
+      .ct-label {
+        color: @ctGridBaseColor;
+      }
+    }//END .ct-labels.ct-grid
+  }//END ct-grid
+}
+
+.calendarModuleDatepickerWidgetStyle(@key, @value) {
+  @calendarContainer: ~'#calendarOutput';
+  @calendarTitleContainer: .ui-datepicker-title;
+  @calendarHeaderContainer: .ui-datepicker-header;
+  @calendarContentContainer: .ui-datepicker.ui-widget-content;
+  @calendarTableCellBackgroundColor: lighten(@value, 30%);
+  @calendarTextColor: if((@themeSetToDarkBool), lighten(@value, 40%), darken(@value, 25%));
+
+
+  @{calendarContainer} {
+    background: transparent;
+
+    @{calendarHeaderContainer} {
+      border-style: none;
+      background-color: @value;
+
+      & .ui-datepicker-prev,
+      & .ui-datepicker-next {
+        background-color: fade(@light, 25%);
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      & @{calendarTitleContainer} {
+
+        .ui-datepicker-year,
+        .ui-datepicker-month {
+          padding: 3px 2px;
+        }
+      }
+    }
+
+    @{calendarContentContainer} {
+      width: 96%;
+      margin: auto;
+      border-width: 0;
+      background-color: inherit;
+
+      thead span {
+        color: darken(@calendarTextColor, 7%);
+      }
+    }
+  }///END calendar
+}///END datepickerCalendarWidgetStyle

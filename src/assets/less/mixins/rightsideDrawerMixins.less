@@ -1,0 +1,34 @@
+.rightSideDrawerStyles(@defaultHeight, @animDuration) {
+
+  @messagesSection: ~'#messagesSection';
+  @settingsSection: ~'#settingsSection';
+
+  .accordionCustomStyles(@minHeight) {
+    .ui-accordion-content,
+    .ui-accordion-content.ui-accordion-content-active {
+
+      min-height: @minHeight;
+
+      &:not(.ui-accordion-content-active) {
+        min-height: 0;
+      }//END :not(ui-accordion-content)
+
+      .transitionFrom(min-height, @animDuration);
+
+    }//END ui-accordion-content
+
+    .ui-accordion-header,
+    .ui-accordion-header.ui-accordion-header-active {
+
+      .transitionFrom(display, @animDuration);
+
+    }///END ui-accordion-header
+  }//END accordionCustomStyles mixin
+
+  @{settingsSection} {
+    .accordionCustomStyles((@defaultHeight * .6)); ///smaller height
+  }
+  @{messagesSection} {
+    .accordionCustomStyles(@defaultHeight);
+  }
+}//END rightSideDrawerStyles mixin

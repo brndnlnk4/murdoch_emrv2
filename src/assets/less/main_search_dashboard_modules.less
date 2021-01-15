@@ -1,0 +1,25 @@
+@gray: rgb(100, 100, 100);
+
+@media screen and (min-width: 720px){
+
+  @{homeSearchDashboardPreviewContainer} {
+    .doubleGradientBg(0deg,lighten(@gray, 10%),lighten(@gray, 30%),lighten(@gray, 10%));
+
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: row;
+    padding: 2% 0;
+    overflow: hidden;
+    overflow-x: auto;
+    display: flex;
+
+    > .card-group{
+      min-width: 33%;
+
+      > .card{
+        max-width: 90%;
+      }
+    }//END .card
+  }//END bottomSearchDashboardPreivewContainer
+
+}//END @media

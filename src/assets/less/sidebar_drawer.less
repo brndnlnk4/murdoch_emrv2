@@ -1,0 +1,33 @@
+
+.leftMenuBottomBgGradient{
+	// .doubleGradientBg(90deg, multiply(#ede, transparent), screen(@primary, transparent), transparent);
+}
+.leftMenuTopBgGradient_hover{
+	// .doubleGradientBg(90deg, multiply(#ddd, #333), screen(@primary, #333), screen(@primary, #333));
+}
+.leftMenuBottomBgGradient_hover{
+	// .doubleGradientBg(90deg, multiply(#ddd, transparent), screen(@primary, transparent), transparent);
+}
+
+
+// ********* RIGHT DRAWER MENU **************
+@{userRightSideDrawerPanel} {
+	///misc styles
+	.react-drawer-overlay {
+		z-index: @navZindex;
+	}
+
+	.react-drawer-drawer {
+		z-index: @navZindex;
+		background-color: @dark;
+	}
+
+	////@media
+	@media screen and (min-height: 600px) {
+		.rightSideDrawerStyles(150px, .3s);
+	}
+
+	@media screen and (min-height: 1000px) {
+		.rightSideDrawerStyles(230px, .3s);
+	}
+}

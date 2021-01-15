@@ -1,0 +1,25 @@
+@media screen and (min-width: 720px){
+
+  .Nav, #myNav {
+    z-index: @navZindex;
+    .boxShadow(0px, 2px, 4px);
+
+    .dropdown-menu:first-of-type{
+      padding: auto 4px;
+      min-width: auto;
+      left: -1px
+    }
+  }//END .Nav
+
+  body {
+    &[dark] {
+      .Nav{
+        background-color: @navBgColorDefault !important;
+      }///END top-nav .Nav
+    }//END body[dark]
+    &[white]{
+      //
+    }
+  }//END body
+
+}//END @media

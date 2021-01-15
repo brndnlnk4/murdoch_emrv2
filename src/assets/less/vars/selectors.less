@@ -1,0 +1,54 @@
+// SELECTORS
+@outputContainers: {
+  dashboard: '#main';
+  patients: '#main';
+}
+
+@jumbotronContainer: ~'#jumbotron-container'; ///JUMBOTRON ELEMENT
+
+/* HOME SEARCH PAGE */
+@homeSearchContainerWrapper: ~'#home-main-search-col-wrapper'; ///OUTER MOST WRAPPER CONTAINER
+@homeSearchContainer: ~'#home-main-search-container'; ///OUTER MOST WRAPPER CONTAINER
+@homeSearchInput: ~'#home-main-search-input';
+@homeSearchBtn: ~'#home-main-search-button';
+
+@homeSearchMenu: ~'#search-dropdown-menu-inner-container'; ///SEARCH DROPDOWN CNTNR
+@homeSearchDashboardPreviewContainer: ~'#bottom-dashboard-module-preview';
+
+@membersModulesContainer: ~'#member_body_modules_container';
+@membersMainWrapperRow: ~'#members-main-wrapper';
+
+
+/* LEFTMENU SECTION */
+@leftMenuContainer: ~'#left-menu-container-section';
+@bodyAttrWhenSidebarToggled: body[expanded];
+@mainContentWrapperClassName: .content-page;
+@navbarClassName: .custom-nav;
+
+
+/* LOGIN SIGNUP SECTION */
+@loginSignupMainContainer: ~'#login_signup_section'; // || string(#login_signup_section)?
+@loginSignupJumbotron: @{login_signup_main_container} .jumbotron:nth-of-type(1);
+@loginSignupTopRow: @{login_signup_main_container} .row:nth-child(1);
+@loginSignupBottomRow: @{login_signup_main_container} .row:nth-child(2);
+
+
+/* DASHBOARD SECTION VARIABLES */
+@clinicDashboardModule: .clinic-dashboard-module-card-elm;
+@prescriptionsDashboardModule: .prescriptions-dashboard-module-card-elm;
+@calendarDashboardModule: .calendar-dashboard-module-card-elm;
+@patientsDashboardModule: .patients-dashboard-module-card-elm;
+@prescriptionsDashboardModule: .prescriptions-dashboard-module-card-elm;
+@favoritesDashboardModule: .favorites-dashboard-module-card-elm;
+@medicationStatsDashboardModule: .medication-stats-dashboard-module-card-elm;
+@newVisitStatsDashboardModule: .new-visit-stats-dashboard-module-card-elm;
+@inboxDashboardModule: .inbox-dashboard-module-card-elm;
+@tasksDashboardModule: .tasks-dashboard-module-card-elm;
+
+
+/* PATIENTS PAGE */
+@addPatientModalContainer: .add-patient-modal-view-container;
+
+
+/* RIGHT SIDE DRAWER PANEL */
+@userRightSideDrawerPanel: ~'#user-right-side-drawer-section-container';

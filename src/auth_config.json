@@ -1,0 +1,7 @@
+{
+  "domain": "dev-27pbm7rm.auth0.com",
+  "clientId": "PIgm4QgdgGNTnT7rmqjhkfBocZAs2aXZ",
+  "redirectUri": "http://localhost:9000/callback",
+  "responseType": "token id_token",
+  "scope": "openid profile email"
+}

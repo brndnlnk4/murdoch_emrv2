@@ -1,0 +1,28 @@
+/* AUTH-MEMBERS SECTION VARIABLES */
+@dashboard_module_max_height: 600px;
+@leftMenuZindex: 900;
+@navZindex: 1000;
+
+/* WIDTH SIZE BREAKPOINTS */
+@xlWidth: 1200px;
+@lgWidth: 960px;
+@mdWidth: 890px;
+
+each(
+  primary
+  secondary
+  success
+  info
+  warning
+  danger
+  light
+  dark,
+  .(@color) { ///args: .(VALUE, KEY, INDEX)
+    ///for each-loop within another each-loop: wrap inner loop inside mixin
+    each({vertical:0deg;horizontal:90deg;top:360deg;bottom:180deg;left:270deg;right:90deg}, {
+      .bg-gradient-@{key}-@{color} {
+        .singleGradientBg(@value, e(@@color), transparent);
+      }//END .bg-gradient
+    })//END each
+  }//END .mixin(){}
+)//END  each

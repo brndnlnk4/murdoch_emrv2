@@ -1,0 +1,159 @@
+// @import url('~react-valid-form-component/dist/index.css');
+@import url('~react-pro-sidebar/dist/css/styles.css');
+@import url('~react-toastify/dist/ReactToastify.css');
+@import url('~react-drawer/lib/react-drawer.css');
+@import url('~bootstrap/dist/css/bootstrap.css');
+@import url('~react-grid-layout/css/styles.css');
+@import url('~react-phone-input-2/lib/style.css');
+@import url('~react-resizable/css/styles.css');
+@import url('~chartist/dist/chartist.min.css');
+@import url('~node-waves/dist/waves.min.css');
+@import url('~jquery-ui-dist/jquery-ui.css');
+@import url('~jquery-noti5/noti5.css');
+@import url('~font-awesome/less/font-awesome.less');
+
+@import url('../css/App.css');
+@import url('./mixins/main');
+@import url('./vars/main');
+
+/* MY MISC-CUSTOM LESS FILES */
+@import url('./navbar');
+@import url('./leftmenu');
+@import url('./main_search');
+@import url('./sidebar_drawer');
+@import url('./reset_styles');
+@import url('./patients_page');
+@import url('./dashboard_modules');
+@import url('./login_signup_section');
+@import url('./helpers/modal_and_popups.less');
+@import url('./main_search_dashboard_modules');
+
+
+
+/* BODY STYLE RESETS */
+body {
+  ///styles within body element
+  @{membersModulesContainer} {
+    border: 2px solid green;
+    max-width: 1330px;
+  }
+
+  ////custom styles based on body[themeColor]
+  each(@customLayoutThemeColors, {
+    ////(white | dark | lights)
+    &[@{key}] {
+      .jqueryuiWidgetDialogStyles(@value);
+      .leftMenuContentStyles(@value);
+      .customScrollBar(0px, @secondary, 10px);
+      .resolveChildElementColors(@value, @index);
+      .dashboardModulesCardContainerStyle(@key, @value);
+    }//END &[key]
+  });///END each
+
+  ul.pagination {
+    justify-content: center;
+  }
+
+  .hide {
+    display: none;
+  }
+}//END body
+
+div#main{
+  background-size: auto 55px !important;
+  background-repeat: no-repeat !important;
+  // .doubleGradientBg(180deg, multiply(@navBgGradient1, @colorMuted), @navBgGradient2, transparent);
+}//END #main
+
+div#body{
+  border: 4px solid @bodyBgSecondary;
+  min-height: 400px;
+  background: rgb(235, 230, 241);
+}
+
+form{
+  legend, h1, h2, h3, h4, h5, lead,label{
+    text-transform: capitalize;
+  }
+}
+
+.row{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+
+/* JUMBOTRON CONTAINER */
+@{jumbotronContainer}{
+  padding-top: 5%;
+  min-height: 500px;
+}
+
+/*///LESS TIPS:
+
+//color & blending methods:
+fade(@color, 10%)
+fadeIn(@color, 10%)
+fadeOut(@color, 10%)
+mix(@color1, @color2, 10%)
+tint(@color1, 10%) //mixes color with white
+shade(@color1, 10%)//mixes color with black
+softlight(@color1, @color2, 10%)
+hardlight(@color1, @color2, 10%)
+multiply(@color1, @color2, 10%)
+...
+lightness(@bgInfo > 40%)
+
+//conditional:
+if((2 > 1), then, else...) // margin: if(not(boolean(10px < 5px)), 10px, 40px)
+
+//mixins:
+.mixin{
+	margin: 4px;
+	...
+}
+
+//guards: using guards '.mixin() when...' with 'default()'
+.mixin(arg) when not(default()) {...} ///default() checks if val matches arg in .mixin(arg)
+
+//loops:
+	@set: {
+		one: blue;
+		two: green;
+		three: red;
+	}
+
+	.set {
+		each(@set, {
+			@{key}-@{index}: @value;
+		});
+	}
+
+	//or
+	.set {
+		each(@set, (@k, @v, @i){
+			@{k}-@{i}: @v;
+		});
+	}
+
+//casting methods:
+boolean(2 > 5)
+percent(2.5)
+escape('4$5%') || e(4$5%)
+
+//type checking methods:
+isstring('fsdfs')
+iscolor(#fff)
+isurl(url(...))
+ispixel(3px)
+ispercentage(3%)
+
+//color methods:
+image-size("file.png") //x, y
+image-width("file.png")
+
+//list array methods:
+each(@values, (@key, @val, @index){...})
+length(@values) // returns 3
+extract(@values, @index)
+*/

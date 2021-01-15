@@ -1,0 +1,67 @@
+@react_tel_input: .react-tel-input;
+@patient_right_card_elm: ~'#patientRightCardElm';
+@patients_middle_section_left_menu: ~'#patientsMainSectionLeftMenu';
+@patients_main_component_recent_patients_table: ~'#recentPatientsTableElm';
+@patients_main_component_container_elm: ~'#patientsComponentMainComponentContainerElm';
+
+@media screen and (min-width:760px) {
+
+  each(1px 2px 3px 4px 5px, {
+    .filter-blur-@{key} {
+      filter: blur(@value);
+    }});
+
+  @{patients_main_component_container_elm} {
+    height: auto; //instead of 800px
+    margin: 8px auto;
+    border-bottom: 1px solid rgb(224, 224, 224);
+    // overflow-y: auto;
+    button, a, .btn {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+        color: darken(@secondary, 30%);
+      }
+    }//END button
+  }///END patients_main_component_container_elm
+
+  @{patients_main_component_recent_patients_table} {
+    > tbody {
+      > tr {
+        &:hover {
+          cursor: pointer;
+        }///END hover
+      }///END tr
+    }///END tbody
+  }
+
+  @{patients_middle_section_left_menu} {
+    > button {
+      color: @secondary;
+    }
+  }//END patients_middle_section_left_menu
+
+  @{patient_right_card_elm} {
+    border: 1 solid;
+
+    ul > li {
+      background-color: transparent;
+      border: transparent;
+    }
+  }//END patient_right_card_elm
+
+  @{addPatientModalContainer} {
+    @react_tel_input {
+      input[type='tel'] {
+        border: none;
+      }
+    }
+    span.invalid-field-warning {
+      &#primaryPhoneNumber-invalid-field,
+      &#secondaryPhoneNumber-invalid-field {
+        float: left;
+      }
+    }
+  }
+}//END @media

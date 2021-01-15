@@ -1,0 +1,81 @@
+
+@media screen and (min-width: 720px){
+  // ******css tips*****
+  // filter: invert(1) hue-rotate(180deg);
+  // cursor-event: none;
+  // box-shadow: 0px 10px 10px rgba(), rgba(); ///stackable box-shadows
+  // background: linear-gradient(...)
+  // background-clip: text;
+  // text-fill-color: transparent;
+
+  .mainSearchHeaderSectionStyles(@activeThemeColor) {
+
+    body[@{activeThemeColor}] {
+
+      @{homeSearchContainer} {
+        background-color: if(@activeThemeColor = dark, #292929, @white);
+        color: @secondary;
+        padding-left: 9em;
+        position: absolute;
+        left: -8vw;
+        right: 0;
+
+        .boxShadow(1px, 3px, 6px, #1b1b1b);
+
+        @{homeSearchMenu}{
+
+          button{
+            cursor: pointer;#02794b
+
+            &:hover{
+              background-color: #02794b !important;
+              border-color: #fd2020;
+              border-width: thick;
+              }//END :hover dropdown menu buttons
+              }//END srch dropdown menu buttons
+            }
+
+            .input-group{
+              //    border: 4px solid #900b4d !important;
+              max-width: 90%;
+              margin: auto;
+            }
+
+            .btn-group:first-of-type{
+              > button:first-child{
+                //        border: 1px solid blue !important;
+                border-top-left-radius: 0px;
+                border-bottom-left-radius: 0px;
+              }
+              > button:last-child{
+                //        border: 1px solid red !important;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+              }
+            }
+
+
+            @{homeSearchInput} {
+
+              //      width: 100%;
+
+              & :focus{
+                border-color: black;
+                outline-style: double;
+                outline-color: black;
+                box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
+                }//END :focus
+                }///END #home_search_input
+              }
+    }
+          }///END mainSearchHeaderSectionStyles mixin
+
+    @{homeSearchContainerWrapper} {
+      min-width: 90vw;
+      height: 196px;
+    }
+
+    .mainSearchHeaderSectionStyles(dark);
+    .mainSearchHeaderSectionStyles(light);
+    .mainSearchHeaderSectionStyles(white);
+}//END @media

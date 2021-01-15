@@ -1,0 +1,166 @@
+///set/list of all dashboard modules
+@dropHerePlaceholderSelector: .drop-here-placeholder;
+
+
+@{membersModulesContainer} {
+	///dashboard modules container ul
+	// > ul.list-group,
+	> div.react-grid-layout {
+		// background-color: rgb(120, 215, 245);
+		// overflow: visible;
+		display: flex;
+		flex-flow: row;
+		flex-wrap: wrap;
+		padding: 8 auto;
+		justify-content: flex-start;
+
+		> li.droppable,
+		> section[draggable] {
+      // section>.card-group>.card...
+			-webkit-overflow-y: overlay !important;
+			-moz-overflow-y: overlay !important;
+			-ms-overflow-y: scroll !important;
+			-o-overflow-y: scroll !important;
+			overflow-y: overlay !important;
+			border-radius: 4px;
+			flex: 0 1 33%; //shorthand
+			// max-height: 650px;
+
+      .transitionFrom(border-color, .2s);
+
+			> .card-group {
+
+				> .card {
+					max-height: 80vh;
+					// overflow-y: hidden !important;
+
+          .card-header {
+
+            .transitionFrom(background-color, .2s);
+
+            &:hover{
+              cursor: pointer;
+            }//END :hover
+          }//END .card-header
+
+					.customScrollBar(@dashboard_module_max_height);
+
+					.show-more-button-container {
+
+						.singleGradientBg(180deg, rgba(#909090, 0.6), rgba(237, 237, 237, 1));
+
+						border-top-color: transparent;
+						position: absolute;
+						height: 50px;
+						bottom: 0;
+						left: 0;
+						// background: #999;
+					}
+
+					&.show-more {
+						overflow-y: scroll !important;
+						overflow-x: hidden;
+
+						& .card-footer:not(:nth-last-of-type(3)) {
+							border: 5px solid darkorange;
+						}
+						.show-more-button-container{
+							margin-bottom: 6px;
+							position: static;
+							bottom: 0;
+						}
+					}
+
+					&:not(.show-more){
+						overflow-x: hidden;
+						// max-height: 450px;
+
+						.show-more-button-container,
+						.card-footer.show-more-button-container{
+							top: 400px;
+							// position: relative;
+							// margin-top: 50px;
+						}//END .show-more-button-container
+
+						& :not(.show-more-button-container){
+
+							> .card-group:first-child {
+								max-width: 400;
+								// border-bottom: 1px solid red;
+							}
+						}
+
+						& .card:first-of-type{
+							max-height: @dashboard_module_max_height;
+							// overflow-y: scroll;
+
+							&.enable-show-more-button{
+								border-bottom: 10px solid #f89393;
+							}//END .enable-show-more-btn
+						}///END card:first-of-type
+					}///END :not()
+				}//END .card:first-child
+			}//END .card-group
+
+			& member_body_modules_container > a:hover, div > a:hover{
+				cursor: pointer;
+			}//END a:hover
+
+      &:hover {
+        border-color: rgba(214, 218, 254, 0.25);
+
+        > .card-group > .card {
+          .card-header {
+            background-color: rgba(#ffffff, 0.2);
+          }//END cardheader
+        }////END cardgroup
+      }///END :hover
+
+		}//END li.droppable
+
+	///dashboard modules...
+		@{clinicDashboardModule} {
+			///CARD-FOOTER WHEN EXPANDED
+			&.show-more-button-container{
+				position: relative;
+				// visibility: hidden;
+			}//END .card-footer
+
+			///CARD-FOOTER WHEN MINIMIZED
+			&:not(.show-more){
+				&.show-more-button-container{
+					position: absolute;
+					// visibility: hidden;
+				}//END .card-footer
+
+				ul.list-group:first-of-type{
+					justify-content: flex-end;
+				}//END ul.list-group:first-of-type
+			}//END &:not(.show-more)
+		}///END #clinicDashboardModule
+
+		@{prescriptionsDashboardModule} {
+			> .card-body{
+				// overflow-y: auto;
+
+				summary dd{
+					padding-right: 5px;
+				}///END summary > dd
+
+			}//END .card-body
+		}//END .prescriptionsDashboardModule
+
+		@{calendarDashboardModule} {
+			> .card-body{
+				#calendarOutput{
+					>div:first-child{
+						margin: auto;
+					}//END div:first-child
+				}//END #calendarOutput
+
+				.customScrollBar();
+			}
+		}//END .calendarDashboardModule
+
+	}//END ul
+}//END #membewr_body_modules_container
